@@ -60,4 +60,37 @@ class UserController extends AbstractFOSRestController
         $em->flush();
         return new View("User Added Successfully", Response::HTTP_OK);
     }
+
+    /**
+     * Обновление данных в базе по конкретному пользователю
+     *
+     * @Rest\Put("/user/{id}")
+     */
+    public function updateAction($id,Request $request)
+    {
+        $name = $request->get('name');
+        $role = $request->get('role');
+        $sn = $this->getDoctrine()->getManager();
+        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find($id);
+        if (empty($user)) {
+            return new View("user not found", Response::HTTP_NOT_FOUND);
+        }
+        elseif(!empty($name) && !empty($role)){
+            $user->setName($name);
+            $user->setRole($role);
+            $sn->flush();
+            return new View("User Updated Successfully", Response::HTTP_OK);
+        }
+        elseif(empty($name) && !empty($role)){
+            $user->setRole($role);
+            $sn->flush();
+            return new View("role Updated Successfully", Response::HTTP_OK);
+        }
+        elseif(!empty($name) && empty($role)){
+            $user->setName($name);
+            $sn->flush();
+            return new View("User Name Updated Successfully", Response::HTTP_OK);
+        }
+        else return new View("User name or role cannot be empty", Response::HTTP_NOT_ACCEPTABLE);
+    }
 }
