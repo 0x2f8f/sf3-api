@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\User;
+use Swagger\Annotations as SWG;
 
 /**
  * @Route("/api")
@@ -18,6 +19,11 @@ class UserController extends AbstractFOSRestController
     /**
      * Список пользователей
      *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Returns users list",
+     * )
+     * @SWG\Tag(name="user")
      * @Rest\Get("/user")
      */
     public function getAction()
@@ -32,6 +38,11 @@ class UserController extends AbstractFOSRestController
     /**
      * Информация по конкретному пользователю
      *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Returns user info by id",
+     * )
+     * @SWG\Tag(name="user")
      * @Rest\Get("/user/{id}")
      */
     public function idAction($id)
