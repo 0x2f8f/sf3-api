@@ -95,7 +95,7 @@ class UserController extends AbstractFOSRestController
     }
 
     /**
-     * Удаление пользователя по id
+     * Удаление пользователя из базы по id
      *
      * @Rest\Delete("/user/{id}")
      */
