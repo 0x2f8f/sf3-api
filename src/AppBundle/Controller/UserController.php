@@ -3,12 +3,16 @@
 namespace AppBundle\Controller;
 
 use FOS\RestBundle\Controller\Annotations as Rest;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\User;
 
+/**
+ * @Route("/api")
+ */
 class UserController extends AbstractFOSRestController
 {
     /**

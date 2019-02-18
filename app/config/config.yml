@@ -30,6 +30,8 @@ framework:
     assets: ~
     php_errors:
         log: true
+    templating:
+        engines: ['twig']
 
 # Twig Configuration
 twig:
@@ -70,6 +72,11 @@ sensio_framework_extra:
    router:
         annotations: false
 
+nelmio_api_doc:
+    areas:
+        path_patterns: # an array of regexps
+            - ^/api(?!/doc$)
+
 nelmio_cors:
     defaults:
         allow_credentials: false
@@ -82,6 +89,8 @@ nelmio_cors:
 
 # FOSRest Configuration
 fos_rest:
+    routing_loader:
+        include_format: false
     body_listener: true
     format_listener:
         rules:
@@ -91,3 +100,5 @@ fos_rest:
         view_response_listener: 'force'
         formats:
             json: true
+    routing_loader:
+        include_format: false
