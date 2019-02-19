@@ -57,6 +57,11 @@ class UserController extends AbstractFOSRestController
     /**
      * Добавление пользователя
      *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Add user",
+     * )
+     * @SWG\Tag(name="user")
      * @Rest\Post("/user")
      */
     public function postAction(Request $request)
@@ -79,6 +84,11 @@ class UserController extends AbstractFOSRestController
     /**
      * Обновление данных в базе по конкретному пользователю
      *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Update user",
+     * )
+     * @SWG\Tag(name="user")
      * @Rest\Put("/user/{id}")
      */
     public function updateAction($id,Request $request)
@@ -112,6 +122,11 @@ class UserController extends AbstractFOSRestController
     /**
      * Удаление пользователя из базы по id
      *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Delete user by id",
+     * )
+     * @SWG\Tag(name="user")
      * @Rest\Delete("/user/{id}")
      */
     public function deleteAction($id)
